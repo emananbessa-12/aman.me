@@ -4,7 +4,8 @@ import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import { HiPhotograph } from "react-icons/hi"
+import { FaFacebook, FaTwitterSquare, FaInstagram } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
@@ -23,10 +24,10 @@ function HeroSection() {
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
         <div className="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
           <h1 className="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-            Hello, <br />
+            Hello there, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
+            {`, I'm an aspiring `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
             .
           </h1>
@@ -51,7 +52,7 @@ function HeroSection() {
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >
-              <FaFacebook size={30} />
+              <FaInstagram size={30} />
             </Link>
             <Link
               href={personalData.leetcode}
@@ -65,7 +66,7 @@ function HeroSection() {
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
             >
-              <FaTwitterSquare size={30} />
+              <HiPhotograph size={30} />
             </Link>
           </div>
 
@@ -77,7 +78,11 @@ function HeroSection() {
               </button>
             </Link>
 
-            <Link className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold" role="button" target="_blank" href={personalData.resume}
+            <Link 
+              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 md:px-8 py-3 md:py-4 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold" 
+              role="button" 
+              target="_blank"  // ← Add this
+              href={personalData.resume}
             >
               <span>Get Resume</span>
               <MdDownload size={16} />
@@ -108,29 +113,33 @@ function HeroSection() {
               <div>
                 <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
                 <span className="text-gray-400">{`'`}</span>
-                <span className="text-amber-300">Abu Said</span>
+                <span className="text-amber-300">Emmanuel Tamenut</span>
                 <span className="text-gray-400">{`',`}</span>
               </div>
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className=" text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
-                <span className="text-amber-300">React</span>
+                <span className="text-amber-300">C++</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NextJS</span>
+                <span className="text-amber-300">Python</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Redux</span>
+                <span className="text-amber-300">JavaScript</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Express</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NestJS</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MySql</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MongoDB</span>
+                <span className="text-amber-300">AWS</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Docker</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">AWS</span>
+                <span className="text-amber-300">Kubernetes</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">PostgreSQL</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">MongoDB</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">PyTorch</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">TensorFlow</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Linux</span>
                 <span className="text-gray-400">{"'],"}</span>
               </div>
               <div>

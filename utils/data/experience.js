@@ -1,20 +1,26 @@
 export const experiences = [
   {
     id: 1,
-    title: 'Software Engineer I',
-    company: "Teton Private Ltd.",
-    duration: "(Jan 2022 - Present)"
-  },
+    title: 'Undergraduate Teaching Assistant',
+    company: "University of Minnesota, College of Science and Engineering CSCI2041: Advanced Programming Principles",
+    duration: "Aug 2025 - Present"
+  },  
   {
     id: 2,
-    title: "FullStack Developer",
-    company: "Fiverr (freelance)",
-    duration: "(Jun 2021 - Jan 2022)"
+    title: 'Backend Developer',
+    company: "Scholarty",
+    duration: "Oct 2025 - Present"
   },
   {
     id: 3,
+    title: "Software Engineer Intern",
+    company: "Raffter's (Sports startup)",
+    duration: "Jun 2025 - Oct 2025"
+  },
+  {
+    id: 4,
     title: "Self Employed",
     company: "Code and build something in everyday.",
-    duration: "(Jan 2018 - Present)"
+    duration: "Jun 2023 - Present"
   }
 ]
