@@ -8,6 +8,7 @@ import GamesSection from "./components/homepage/games";
 import HeroSection from "./components/homepage/hero-section";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
+import VisitTracker from "./components/VisitTracker";
 
 async function getData() {
   const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
@@ -28,15 +29,16 @@ export default async function Home() {
 
   return (
     <div suppressHydrationWarning >
+      <VisitTracker />
       <HeroSection />
       <AboutSection />
       <Experience />
       <Skills />
       <Projects />
       <Education />
-      {/* <Blog blogs={blogs} /> */}
+      {/* <Blog blogs={blogs} />*/}
       <ContactSection />
-      <GamesSection />
+      <GamesSection /> 
     </div>
   )
 };
