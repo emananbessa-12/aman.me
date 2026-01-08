@@ -32,8 +32,8 @@ export async function POST(request) {
     }
 
     const message = page === 'New Visitor' 
-      ? `🌟 <b>New Visitor!</b>\n🔗 From: ${referrer}\n⏰ ${new Date().toLocaleString()}`
-      : `📊 <b>User Left Site</b>\n⏱️ ${userAgent}\n⏰ ${new Date().toLocaleString()}`;
+      ? `🌟 <b>New Visitor!</b>\n🔗 From: ${referrer}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`
+      : `📊 <b>User Left Site</b>\n⏱️ ${userAgent}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
 
     // Send Telegram notification
     const telegramSuccess = await sendTelegramMessage(token, chat_id, message);
