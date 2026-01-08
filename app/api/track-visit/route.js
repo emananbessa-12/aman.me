@@ -1,6 +1,25 @@
 import axios from 'axios';
 import { NextResponse } from 'next/server';
 
+// Helper function to get location from IP
+async function getLocationFromIP(ip) {
+  try {
+    // Use ipapi.co for free IP geolocation
+    const response = await fetch(`https://ipapi.co/${ip}/json/`);
+    const data = await response.json();
+    
+    if (data.city && data.region && data.country) {
+      return `${data.city}, ${data.region}, ${data.country}`;
+    } else if (data.country) {
+      return data.country;
+    }
+    return 'Unknown location';
+  } catch (error) {
+    console.error('Location lookup failed:', error);
+    return 'Location lookup failed';
+  }
+}
+
 // Helper function to send a message via Telegram
 async function sendTelegramMessage(token, chat_id, message) {
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -31,9 +50,20 @@ export async function POST(request) {
       }, { status: 400 });
     }
 
+    // Get visitor's IP for location lookup
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0].trim() : 
+               request.headers.get('x-real-ip') || 'Unknown IP';
+    
+    // Get geographic location (only if we have a real IP)
+    let location = 'Unknown location';
+    if (ip && ip !== 'Unknown IP' && !ip.startsWith('127.') && !ip.startsWith('::1')) {
+      location = await getLocationFromIP(ip);
+    }
+
     const message = page === 'New Visitor' 
-      ? `🌟 <b>New Visitor!</b>\n🔗 From: ${referrer}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`
-      : `📊 <b>User Left Site</b>\n⏱️ ${userAgent}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
+      ? `🌟 <b>New Visitor!</b>\n📍 <b>Location:</b> ${location}\n🔗 <b>From:</b> ${referrer}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`
+      : `📊 <b>User Left Site</b>\n📍 <b>Location:</b> ${location}\n⏱️ ${userAgent}\n⏰ ${new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' })}`;
 
     // Send Telegram notification
     const telegramSuccess = await sendTelegramMessage(token, chat_id, message);

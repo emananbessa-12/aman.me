@@ -82,7 +82,7 @@ function GamesSection() {
       id: 5,
       title: "Lo-Fi Beats",
       artist: "Calm Creator",
-      src: "/audio/lo-fi-beats.mp3",
+      src: "/audio/lofi-beats.mp3",
       cover: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
       duration: "3:45",
       genre: "Lo-Fi"
